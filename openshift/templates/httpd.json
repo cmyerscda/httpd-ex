@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "template.openshift.io/v1",
   "metadata": {
-    "name": "httpd-example",
+    "name": "httpd-another-example",
     "annotations": {
       "openshift.io/display-name": "Apache HTTP Server",
       "description": "An example Apache HTTP Server (httpd) application that serves static content. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/httpd-ex/blob/master/README.md.",
@@ -17,8 +17,8 @@
   },
   "message": "The following service(s) have been created in your project: ${NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/sclorg/httpd-ex/blob/master/README.md.",
   "labels": {
-      "template": "httpd-example",
-      "app": "httpd-example",
+      "template": "httpd-another-example",
+      "app": "httpd-another-example",
       "app.openshift.io/runtime": "apache"
   },
   "objects": [
@@ -35,8 +35,8 @@
         "ports": [
           {
             "name": "web",
-            "port": 8080,
-            "targetPort": 8080
+            "port": 8081,
+            "targetPort": 8081
           }
         ],
         "selector": {
@@ -156,11 +156,11 @@
           "spec": {
             "containers": [
               {
-                "name": "httpd-example",
+                "name": "httpd-another-example",
                 "image": " ",
                 "ports": [
                   {
-                    "containerPort": 8080
+                    "containerPort": 8081
                   }
                 ],
                 "readinessProbe": {
@@ -168,7 +168,7 @@
                   "initialDelaySeconds": 3,
                   "httpGet": {
                     "path": "/",
-                    "port": 8080
+                    "port": 8081
                   }
                 },
                 "livenessProbe": {
@@ -176,7 +176,7 @@
                     "initialDelaySeconds": 30,
                     "httpGet": {
                         "path": "/",
-                        "port": 8080
+                        "port": 8081
                     }
                 },
                 "resources": {
